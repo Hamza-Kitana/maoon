@@ -1,0 +1,273 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Tajawal", "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Amiri", "Playfair Display", serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-emerald-deep: var(--emerald-deep);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Warm ivory background, deep emerald primary, gold accent - government / trust */
+  --background: oklch(0.985 0.008 95);
+  --foreground: oklch(0.18 0.03 160);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.03 160);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.03 160);
+
+  --primary: oklch(0.32 0.09 160);            /* deep emerald */
+  --primary-foreground: oklch(0.985 0.01 95);
+
+  --secondary: oklch(0.95 0.02 95);
+  --secondary-foreground: oklch(0.22 0.05 160);
+
+  --muted: oklch(0.94 0.015 95);
+  --muted-foreground: oklch(0.45 0.02 160);
+
+  --accent: oklch(0.93 0.05 90);
+  --accent-foreground: oklch(0.28 0.08 160);
+
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 95);
+
+  --border: oklch(0.9 0.015 95);
+  --input: oklch(0.9 0.015 95);
+  --ring: oklch(0.65 0.12 90);
+
+  --gold: oklch(0.78 0.14 82);
+  --gold-foreground: oklch(0.2 0.05 90);
+  --emerald-deep: oklch(0.28 0.08 160);
+
+  --gradient-hero: linear-gradient(135deg, oklch(0.25 0.09 160) 0%, oklch(0.18 0.06 160) 60%, oklch(0.12 0.04 160) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.85 0.15 85) 0%, oklch(0.72 0.16 75) 100%);
+  --shadow-elegant: 0 30px 80px -30px color-mix(in oklab, var(--emerald-deep) 45%, transparent);
+  --shadow-gold: 0 12px 40px -12px color-mix(in oklab, var(--gold) 55%, transparent);
+
+  --sidebar: oklch(0.22 0.05 160);
+  --sidebar-foreground: oklch(0.95 0.02 95);
+  --sidebar-primary: oklch(0.78 0.14 82);
+  --sidebar-primary-foreground: oklch(0.2 0.05 90);
+  --sidebar-accent: oklch(0.28 0.07 160);
+  --sidebar-accent-foreground: oklch(0.98 0.01 95);
+  --sidebar-border: oklch(0.32 0.06 160);
+  --sidebar-ring: oklch(0.78 0.14 82);
+}
+
+.dark {
+  --background: oklch(0.14 0.03 160);
+  --foreground: oklch(0.97 0.01 95);
+  --card: oklch(0.2 0.04 160);
+  --card-foreground: oklch(0.97 0.01 95);
+  --popover: oklch(0.2 0.04 160);
+  --popover-foreground: oklch(0.97 0.01 95);
+  --primary: oklch(0.78 0.14 82);
+  --primary-foreground: oklch(0.18 0.05 160);
+  --secondary: oklch(0.25 0.05 160);
+  --secondary-foreground: oklch(0.97 0.01 95);
+  --muted: oklch(0.25 0.04 160);
+  --muted-foreground: oklch(0.7 0.02 95);
+  --accent: oklch(0.3 0.08 160);
+  --accent-foreground: oklch(0.97 0.01 95);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.78 0.14 82);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { direction: rtl; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Amiri is a calligraphic Naskh font: it needs generous line-height and no negative
+     tracking, otherwise Arabic letters and diacritics visually collide. */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0;
+    word-spacing: 0.08em;
+    line-height: 1.55;
+  }
+}
+
+@utility text-gradient-gold {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-hero {
+  background-image: var(--gradient-hero);
+}
+
+@utility shadow-elegant {
+  box-shadow: var(--shadow-elegant);
+}
+
+@utility shadow-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+@utility glass {
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid color-mix(in oklab, var(--gold) 20%, transparent);
+}
+
+@utility hairline-gold {
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  height: 1px;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes ken-burns {
+  0% { transform: scale(1.05) translate(0, 0); }
+  100% { transform: scale(1.18) translate(-2%, -2%); }
+}
+
+@keyframes gradient-pan {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(50px, -35px) scale(1.08); }
+  66% { transform: translate(-35px, 25px) scale(0.94); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* All ambient/infinite animations are promoted to their own GPU layer so their
+   (often heavily-blurred) textures are rasterized once and only composited —
+   this removes per-frame repaints that cause scroll jank. */
+@utility animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@utility animate-ken-burns {
+  animation: ken-burns 22s ease-in-out infinite alternate;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@utility animate-gradient-pan {
+  background-size: 200% 200%;
+  animation: gradient-pan 16s ease-in-out infinite;
+  will-change: background-position;
+}
+@utility animate-drift {
+  animation: drift 14s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Animated conic "aurora" border for the category cards: a slowly rotating
+   colorful gradient shows through a 1px frame around the card content. */
+@utility card-aurora {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+.card-aurora::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: -150%;
+  background: conic-gradient(
+    from 0deg,
+    var(--aurora-a, oklch(0.78 0.14 82)),
+    transparent 25%,
+    var(--aurora-b, oklch(0.55 0.12 160)),
+    transparent 60%,
+    var(--aurora-a, oklch(0.78 0.14 82))
+  );
+  animation: spin-slow 7s linear infinite;
+  animation-delay: var(--aurora-delay, 0s);
+  will-change: transform;
+}
+.card-aurora::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 1px;
+  border-radius: inherit;
+  background:
+    linear-gradient(150deg, var(--aurora-tint, transparent), transparent 55%),
+    oklch(0.24 0.06 160 / 0.92);
+}
+
+/* Respect users who prefer less motion, and keep the site perfectly still/smooth
+   for them without altering the layout or design. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
